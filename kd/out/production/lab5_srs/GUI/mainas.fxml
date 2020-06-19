@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+  <tabs>
+    <Tab text="Automobilis">
+      <content>
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="900.0">
+               <children>
+                  <TableView fx:id="autoTableView" layoutX="36.0" layoutY="22.0" prefHeight="178.0" prefWidth="773.0">
+                    <columns>
+                      <TableColumn fx:id="autoIDCol" prefWidth="63.19997787475586" text="autoID" />
+                      <TableColumn fx:id="markeCol" prefWidth="113.60003662109375" text="Marke" />
+                        <TableColumn fx:id="modelisCol" prefWidth="96.80000305175781" text="Modelis" />
+                        <TableColumn fx:id="spalvaCol" prefWidth="72.0" text="Spalva" />
+                        <TableColumn fx:id="kurasCol" prefWidth="80.79998779296875" text="Kuras" />
+                        <TableColumn fx:id="metaiCol" prefWidth="84.79998779296875" text="Metai" />
+                        <TableColumn fx:id="kainaCol" prefWidth="84.0" text="Kaina" />
+                        <TableColumn fx:id="arLaisvaCol" onEditCommit="#changeVIPStatusOfCar" prefWidth="91.20001220703125" text="Ar laisva" />
+                        <TableColumn fx:id="onlyVIPCol" onEditCommit="#changeVIPStatusOfCar" prefWidth="85.59991455078125" text="VIP only" />
+                    </columns>
+                  </TableView>
+                  <HBox layoutX="36.0" layoutY="209.0" prefHeight="50.0" prefWidth="766.0">
+                     <children>
+                        <TextField fx:id="autoIDField" prefWidth="63.0" promptText="autoID" />
+                        <TextField fx:id="markeField" prefWidth="113.0" promptText="Marke" />
+                        <TextField fx:id="modelisField" prefWidth="96.0" promptText="Modelis" />
+                        <TextField fx:id="spalvaField" prefWidth="72.0" promptText="Spalva" />
+                        <TextField fx:id="kurasField" prefWidth="80.0" promptText="Kuras" />
+                        <TextField fx:id="metaiField" prefWidth="84.0" promptText="Metai" />
+                        <TextField fx:id="kainaField" prefWidth="84.0" promptText="Kaina" />
+                        <TextField fx:id="arLaisvaField" prefWidth="91.0" promptText="Ar laisva" />
+                        <TextField fx:id="onlyVIPField" prefWidth="85.0" promptText="VIP only" />
+                     </children>
+                  </HBox>
+                  <VBox layoutX="838.0" layoutY="67.0" prefHeight="120.0" prefWidth="95.0">
+                     <children>
+                        <Button fx:id="addNewCarButton" mnemonicParsing="false" onAction="#newCarButtonClicked" prefHeight="39.0" prefWidth="99.0" text="ADD" />
+                        <Button mnemonicParsing="false" onAction="#deleteCarButtonClicked" prefHeight="40.0" prefWidth="98.0" text="DEL" />
+                        <Button mnemonicParsing="false" onAction="#deleteAllCarsFromDatabaseButtonClicked" prefHeight="42.0" prefWidth="98.0" text="DEL ALL" />
+                     </children>
+                  </VBox>
+                  <TextField fx:id="rentStart" layoutX="268.0" layoutY="270.0" prefHeight="26.0" prefWidth="106.0" />
+                  <TextField fx:id="rentEnd" layoutX="268.0" layoutY="300.0" prefHeight="26.0" prefWidth="106.0" />
+                  <TextField fx:id="price" layoutX="268.0" layoutY="329.0" prefHeight="26.0" prefWidth="106.0" />
+                  <Text layoutX="123.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuomos Pradzia" />
+                  <Text layoutX="120.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuomos pabaiga" />
+                  <Text layoutX="80.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Automobilio kaina/diena" />
+                  <Button fx:id="calculateCarPriceButton" layoutX="400.0" layoutY="280.0" mnemonicParsing="false" onAction="#CalculatePriceOfCarButtonClicled" prefHeight="66.0" prefWidth="102.0" text="Calculate price" />
+                  <Separator layoutX="36.0" layoutY="261.0" prefHeight="0.0" prefWidth="684.0" />
+                  <TextField fx:id="carBelowOrEqualPrice" layoutX="599.0" layoutY="301.0" prefHeight="26.0" prefWidth="99.0" />
+                  <Text layoutX="553.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kaina" />
+                  <Button layoutX="720.0" layoutY="283.0" mnemonicParsing="false" onAction="#showCarsBelowPriceButtonClicked" prefHeight="86.0" prefWidth="114.0" text="Show me cars below entered price" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Vartotojas">
+      <content>
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="900.0">
+               <children>
+                  <TableView fx:id="vartTableView" layoutX="35.0" layoutY="39.0" prefHeight="322.0" prefWidth="593.0">
+                    <columns>
+                      <TableColumn fx:id="vartVardasCol" onEditCommit="#changeUser" prefWidth="124.79995727539062" text="Vardas" />
+                      <TableColumn fx:id="vartPavardeCol" onEditCommit="#changeUser" prefWidth="86.39996337890625" text="Pavarde" />
+                        <TableColumn fx:id="vartAkCol" prefWidth="112.0" text="Asmens Kodas" />
+                        <TableColumn fx:id="vartTelNrCol" minWidth="0.0" prefWidth="112.00003051757812" text="Tel.Nr" />
+                        <TableColumn fx:id="vartVipCol" prefWidth="156.0" text="VIP" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="706.0" layoutY="191.0" mnemonicParsing="false" onAction="#deleteUserButtonClicked" prefHeight="38.0" prefWidth="100.0" text="Delete" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="Sutartis">
+          <content>
+              <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="418.0" prefWidth="1000.0">
+               <children>
+                  <TextField fx:id="vartVardasField" layoutX="101.0" layoutY="32.0" prefHeight="26.0" prefWidth="82.0" />
+                  <TextField fx:id="vartPavardeField" layoutX="101.0" layoutY="68.0" prefHeight="26.0" prefWidth="82.0" />
+                  <TextField fx:id="vartAkField" layoutX="101.0" layoutY="103.0" prefHeight="26.0" prefWidth="84.0" />
+                  <TextField fx:id="vartTelNrField" layoutX="101.0" layoutY="142.0" prefHeight="26.0" prefWidth="84.0" />
+                  <Text layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vardas" />
+                  <Text layoutX="10.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pavarde" />
+                  <Text layoutX="10.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Asm.Kodas" />
+                  <Text layoutX="8.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel.Numeris" />
+                  <Text layoutX="22.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VIP" />
+                  <Button fx:id="alertBox" layoutX="26.0" layoutY="218.0" mnemonicParsing="false" onAction="#addNewUserButtonClicked" prefHeight="26.0" prefWidth="157.0" text="Create user" />
+                  <TextField fx:id="vartAKCheckField" layoutX="372.0" layoutY="89.0" prefHeight="26.0" prefWidth="86.0" />
+                  <RadioButton fx:id="yesRb" layoutX="101.0" layoutY="180.0" mnemonicParsing="false" onAction="#radioSelect" text="Yes">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="vipRb" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="noRb" layoutX="152.0" layoutY="180.0" mnemonicParsing="false" onAction="#radioSelect" text="No" toggleGroup="$vipRb" />
+                  <Text layoutX="287.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iveskite AK:" />
+                  <Separator layoutX="225.0" layoutY="26.0" orientation="VERTICAL" prefHeight="324.0" prefWidth="18.0" />
+                  <Button layoutX="726.0" layoutY="103.0" mnemonicParsing="false" onAction="#signContractButtonClicked" prefHeight="51.0" prefWidth="71.0" text="SIGN" textAlignment="JUSTIFY" />
+                  <ComboBox fx:id="carBox" layoutX="371.0" layoutY="39.0" onAction="#comboChanged" prefHeight="26.0" prefWidth="88.0" />
+                  <Text layoutX="264.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pasirinkite auto" />
+                  <TextField fx:id="carID" layoutX="372.0" layoutY="133.0" prefHeight="26.0" prefWidth="86.0" />
+                  <Text layoutX="334.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
+                  <TextField fx:id="sutartiesNuomPradziosData" layoutX="594.0" layoutY="40.0" prefHeight="26.0" prefWidth="85.0" promptText="ex.19950503" />
+                  <Text layoutX="489.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pradzios data" />
+                  <Text layoutX="486.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pabaigos data" />
+                  <TextField fx:id="sutartiesNuomPabaigosData" layoutX="595.0" layoutY="89.0" prefHeight="26.0" prefWidth="84.0" promptText="ex.19950503" />
+                  <Text layoutX="481.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pasirasymo data" />
+                  <TextField fx:id="sutartiesNuomPasirasymoData" layoutX="595.0" layoutY="133.0" prefHeight="26.0" prefWidth="83.0" promptText="ex.19950503" />
+                  <Text layoutX="731.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kaina/diena" />
+                  <TextField fx:id="sutartiesNuomKaina" layoutX="824.0" layoutY="38.0" prefHeight="26.0" prefWidth="83.0" />
+                  <TableView fx:id="sutartisTableView" layoutX="264.0" layoutY="189.0" prefHeight="200.0" prefWidth="703.0">
+                    <columns>
+                      <TableColumn fx:id="vartotojasCol" prefWidth="158.40005493164062" text="Vartotojas" />
+                      <TableColumn fx:id="sutNuomPradCol" prefWidth="83.73336791992188" text="NuomPrad" />
+                        <TableColumn fx:id="sutNuomPabCol" prefWidth="101.33334350585938" text="NuomPab" />
+                        <TableColumn fx:id="sutNuomPasirasymoDataCol" prefWidth="84.79998779296875" text="Sut. data" />
+                        <TableColumn fx:id="sutNrCol" prefWidth="58.4000244140625" text="Sut. Nr" />
+                        <TableColumn fx:id="sutNuomKainaCol" prefWidth="117.599853515625" text="Sut. Nuom.Kaina" />
+                        <TableColumn fx:id="sutNuomAutoIDCol" prefWidth="100.80010986328125" text="Sut. autoID" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="806.0" layoutY="103.0" mnemonicParsing="false" onAction="#deleteContractButtonClicked" prefHeight="50.0" prefWidth="74.0" text="DELETE" />
+               </children></AnchorPane>
+          </content>
+      </Tab>
+  </tabs>
+</TabPane>
